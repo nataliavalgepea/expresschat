@@ -1,0 +1,15 @@
+if rooms.length > 0
+    h2 Available rooms
+div#room-list
+    for room in rooms
+        div
+            a.room-name(id=room._id, href='/chat/' + user._id + '/room/' + room._id)=room.name
+br
+
+form#roomForm(name='room')
+    .form-group
+        label Create new room
+        input.form-control.input-sm(type='text',placeholder='Room name', required, name='name')
+        input(type='text', style='display: none', name='initiator', value=user._id)
+    button.btn.btn-default(type='submit', style='margin-bottom: 1em') Enter
+

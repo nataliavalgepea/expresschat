@@ -1,0 +1,28 @@
+
+.panel.panel-info.room(id=room._id)
+    if interlocutor
+        .panel-heading='Chatting with '
+            img.media-object.img-circle.chat-image(src=interlocutor.pictureUrl)
+            =interlocutor.name
+    else
+        .panel-heading
+            ='You are in '
+            strong=room.name
+            =' room'
+    .panel-body
+        ul#messages.media-list
+            if messages
+                for message in messages
+                    li.media.message
+                        .media-body
+                            .media
+                                a.pull-left(href='#')
+                                    img.media-object.img-circle(src=message.sender.pictureUrl)
+                                .media-body=message.body
+                                    br
+                                    small.text-muted=message.sender.name + ' | ' + message.date
+    .panel-footer
+        .input-group
+            input#message-input.form-control(type='text', placeholder='Enter Message')
+            span.input-group-btn
+                button#message-btn.btn.btn-info(type='button') SEND

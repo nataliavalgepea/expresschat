@@ -1,0 +1,17 @@
+extends layouts/layout.pug
+block content
+    .container
+        .row(style='padding-top:40px;')
+            h3.text-center
+                img#current_user_picture.media-object.img-circle.chat-image(src=user.pictureUrl)
+
+                span.current_user(id=user._id)=user.name
+                |! Welcome to the chat
+            br
+            .col-md-8
+                if room != null
+                    include partials/room.pug
+                else
+                    include partials/room-list.pug
+            .col-md-4
+                include partials/users.pug

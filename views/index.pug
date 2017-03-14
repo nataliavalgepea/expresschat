@@ -1,0 +1,52 @@
+﻿extends layouts/layout.pug
+block content
+    .container
+        .col-md-12
+            h2 Select a user to enter the chat
+            .row
+                each user in users
+                    .col-lg-1.col-md-2.col-sm-3.col-xs-4.thumb(style='margin-bottom: 1em')
+                        p
+                            a(href='chat/' + user._id)=user.name
+                        a(href='chat/' + user._id)
+                            if user.pictureUrl
+                                img.img-responsive(src=user.pictureUrl, alt='')
+                            else
+                                img.img-responsive(src='http://placehold.it/100x100', alt='')
+        .col-md-12(style='margin-top: 1em')
+            button.btn.btn-primary(data-toggle='collapse', data-target='#user-form') Or enter chat as new user
+            #user-form.collapse
+                .form-group(style='margin-top: 1em')
+                    label Chose profile picture
+                form#userForm(name='user')
+                    .row
+                        .col-lg-1.col-md-2.col-sm-3.col-xs-4.thumb
+                            label
+                                input(type='radio', name='pictureUrl', value='/assets/img/1.jpg')
+                                img.img-responsive(src='/assets/img/1.jpg', alt='')
+                        .col-lg-1.col-md-2.col-sm-3.col-xs-4.thumb
+                            label
+                                input(type='radio', name='pictureUrl', value='/assets/img/2.gif')
+                                img.img-responsive(src='/assets/img/2.gif', alt='')
+                        .col-lg-1.col-md-2.col-sm-3.col-xs-4.thumb
+                            label
+                                input(type='radio', name='pictureUrl', value='/assets/img/3.jpg')
+                                img.img-responsive(src='/assets/img/3.jpg', alt='')
+                        .col-lg-1.col-md-2.col-sm-3.col-xs-4.thumb
+                            label
+                                input(type='radio', name='pictureUrl', value='/assets/img/4.jpg')
+                                img.img-responsive(src='/assets/img/4.jpg', alt='')
+                        .col-lg-1.col-md-2.col-sm-3.col-xs-4.thumb
+                            label
+                                input(type='radio', name='pictureUrl', value='/assets/img/5.gif')
+                                img.img-responsive(src='/assets/img/5.gif', alt='')
+                        .col-lg-1.col-md-2.col-sm-3.col-xs-4.thumb
+                            label
+                                input(type='radio', name='pictureUrl', value='/assets/img/6.png')
+                                img.img-responsive(src='/assets/img/6.png', alt='')
+                    .col-md-6(style='padding: 0; margin-top: 1em')
+                        .form-group
+                            #user-error
+                            label Enter your name
+                            input#user-name.form-control.input-sm(type='text', name='name')
+                        button.btn.btn-default(type='submit') Enter chat

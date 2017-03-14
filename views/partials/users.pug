@@ -1,0 +1,13 @@
+.panel.panel-primary
+    .panel-heading  Users
+    .panel-body
+        ul.media-list
+            for user in users
+                li.media
+                    .media-body.chat-user(id=user._id)
+                        .media
+                            .pull-left
+                                img.media-object.img-circle(style='max-height:40px;', src=user.pictureUrl)
+                            .media-body
+                                h5=user.name
+                                    span.badge(id='badge_' + user._id)
